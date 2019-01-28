@@ -1,4 +1,4 @@
-#Homework 3. Домашняя работа на неделю с 28.01.
+# Homework 3. Домашняя работа на неделю с 28.01.
 
 Создать ветку от существующего проекта gitHub: https://github.com/AndesTechConsulting3/JavaSE-Day06-Homework3.git 
 Имя ветки должно содержать строку rfb, например VasilyPetrov-rfb-branch-home3.
