@@ -41,7 +41,7 @@ public class CreditAccount extends Account {
     }
 
 
-    public static Account generateCreditAccount(Integer accountId, Customer customer, double balance){
-        return new CreditAccount(accountId,customer,balance);
-    }
+//    public static Account generateCreditAccount(Integer accountId, Customer customer, double balance){
+//        return new CreditAccount(accountId,customer,balance);
+//    }
 }
