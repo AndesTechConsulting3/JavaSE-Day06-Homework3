@@ -1,5 +1,6 @@
 package org.andestech.learning.rfb19.g3;
 
+
 import java.util.Random;
 
 public class DebitAccount extends Account {
@@ -11,16 +12,11 @@ public class DebitAccount extends Account {
     private static int MAX_AGE = 65;
     private static int MIN_AGE = 18;
 
-    public static double ballance;
-    private static int accountId;
-    private static String customer;
-    private static int age;
-
 
     public DebitAccount(String customer, int ballance, int accountId) {
         super(customer, ballance, accountId);
         if (ballance > WITHDRAWAL_MIN && ballance < WITHDRAWAL_MAX) {
-            System.out.println(customer + " Thanks you operation approved " + accountId + " your ballance: " + ballance);
+            System.out.println(customer + "Thanks you operation approved " + accountId + " your ballance: " + ballance);
         } else {
             System.out.println("Sorry operation access denided");
         }
@@ -29,21 +25,28 @@ public class DebitAccount extends Account {
 
     @Override
     public double withdrawal(double summa) throws DebitAccountException {
-        if (ballance - summa > SUMMA_MIN && ballance - summa < SUMMA_MAX) {
-            System.out.println(customer + " Create operation approved " + " your account " + accountId );
-
+        int a = 1;
+        int b = 999999999;
+        int operation = b - a;
+        Random random = new Random();
+        if (summa > SUMMA_MIN && summa < SUMMA_MAX) {
+            System.out.println("Create operation approved " + random.nextInt(operation) + " your account");
         } else {
-            throw new DebitAccountException("Sorry, limit Over!! ", ballance - summa < SUMMA_MIN);
+            throw new DebitAccountException("Sorry, limit Over! ", summa < SUMMA_MIN && summa > SUMMA_MAX);
         }
         return summa;
     }
 
     @Override
     public double putMoney(double money) throws DebitAccountException {
-        if (ballance - money > WITHDRAWAL_MIN) {
-            System.out.println(customer + "Create operation approved");
+        int a = 1;
+        int b = 999999999;
+        int operation = b - a;
+        Random random = new Random();
+        if (money > WITHDRAWAL_MIN && money < WITHDRAWAL_MAX) {
+            System.out.println("Create operation approved" + random.nextInt(operation));
         } else {
-            throw new DebitAccountException("Sorry, limit Over ", ballance - money < WITHDRAWAL_MIN);
+            throw new DebitAccountException("Sorry, limit Over ", money < WITHDRAWAL_MIN && money > WITHDRAWAL_MAX);
         }
         return money;
     }

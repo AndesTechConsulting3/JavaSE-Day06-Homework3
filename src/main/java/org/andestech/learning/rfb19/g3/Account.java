@@ -2,9 +2,6 @@ package org.andestech.learning.rfb19.g3;
 
 public abstract class Account {
 
-    private static double WITHDRAWAL_MIN = 5000;
-    private static double SUMMA_MIN = 10000;
-
     public String getCustomer() {
         return customer;
     }
@@ -38,8 +35,8 @@ public abstract class Account {
     private double ballance;
     private int accountId;
 
-    public abstract double withdrawal(double summa) throws DebitAccountException;
+    public abstract double withdrawal(double summa) throws DebitAccountException, CreditAccountExteption;
 
-    public abstract double putMoney(double money) throws DebitAccountException;
+    public abstract double putMoney(double money) throws DebitAccountException, CreditAccountExteption;
 
 }
