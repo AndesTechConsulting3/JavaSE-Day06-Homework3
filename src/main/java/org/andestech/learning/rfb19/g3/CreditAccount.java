@@ -1,23 +1,17 @@
 package org.andestech.learning.rfb19.g3;
 
 public class CreditAccount extends Account {
-//public class CreditAccount implements CrAcc{
 
     private double bb = 0;
-    private static final int minBal=-5000, maxBal=15000, minW=0, maxW=10000, minD=0, maxD=15000, minAge=18, maxAge=70;
+    private static final int minBal=-5000, maxBal=15000, minW=0, maxW=10000, minD=0, maxD=15000, minAge=18, maxAge=70, maxCH = 2;
 
-    private CreditAccount(Customer customer, double balance, String accountId)
-            //throws CreditAccountException
-    {
-        //super(customer, balance, accountId);
-        //if((balance >= minBal && balance <= maxBal ) && (customer.age >= minAge && customer.age <= maxAge)){
+    private CreditAccount(Customer customer, double balance, String accountId){
             this.balance = balance;
             this.accountId = accountId;
             this.customer = customer;
-        //}else throw new CreditAccountException("Account opening failed!");
     }
 
-    public static Account getCreditAccount(Customer customer, double balance, String accountId) throws CreditAccountException
+    public static Account getCreditAccount(Customer customer, double balance, String accountId, int CreditHistory) throws CreditAccountException
     {
         if (customer.getAge() < minAge) {
             throw new CreditAccountException("You are getting too young for this sh.t");
@@ -25,16 +19,17 @@ public class CreditAccount extends Account {
         else if (customer.getAge() > maxAge) {
             throw new CreditAccountException("You are getting too old for this sh.t");
         }
-        else {
+        else if (CreditHistory > maxCH) {
+            throw new CreditAccountException("You are having too much credit packs, bro");
+        }
+        else
+            {
             return new CreditAccount(customer, balance, accountId);
         }
     }
 
-    //double s = 100;
-
     @Override
     public void withdrawal(double sum) throws DebitException {
-        //setBalance(s);
         if(balance >= minBal && balance <= maxBal )
         {
             if ((balance - sum) >= minBal)
@@ -55,7 +50,6 @@ public class CreditAccount extends Account {
 
     @Override
     public void putMoney(double sum) throws CreditException {
-        //setBalance(s);
         if(balance >= minBal && balance <= maxBal )
         {
             if (sum > minD && sum + balance < maxD)
@@ -70,9 +64,5 @@ public class CreditAccount extends Account {
         else throw new CreditException ("Sum exceeds limits " + minD + " < " + (sum+balance) + " < " + maxD);}
         else throw new CreditException ("Incorrect balance! " + balance);
     }
-
-//    public String PrintCreditAccount(){return "Name: " + customer.getFirstName() + ", \nSurname: " + customer.getSecondName() +
-//            ", \nAddress: " + customer.getAddress() + ", \nWhat's My Age Again? " + customer.getAge() +
-//            ", \nAccountId: " + accountId + ", \nBalance: " + balance;}
 
 }
